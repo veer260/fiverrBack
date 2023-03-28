@@ -18,7 +18,7 @@ const newError = require("../utils/createError");
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.accessToken;
-  // console.log(token);
+  console.log(token);
   if (!token) {
     return next(newError("token is not valid", 403));
   }

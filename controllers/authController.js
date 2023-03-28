@@ -42,6 +42,8 @@ const login = async (req, res, next) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
+      sameSite: "None",
+      secure: true,
     });
     const { password: userPassword, ...rest } = user._doc;
     return res.json({
@@ -57,7 +59,7 @@ const login = async (req, res, next) => {
 
 const logout = async (req, res) => {
   res
-    .clearCookie("access-token", {
+    .clearCookie("accessToken", {
       sameSite: "none",
       secure: true,
     })
