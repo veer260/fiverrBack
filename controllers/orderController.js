@@ -22,6 +22,7 @@ const createOrder = async (req, res, next) => {
 };
 const getOrders = async (req, res, next) => {
   try {
+    console.log("get orders called");
     const orders = await Orders.find({
       ...(req.isSeller ? { sellerId: req.id } : { buyerId: req.id }),
       isCompleted: true,
